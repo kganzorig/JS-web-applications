@@ -1,3 +1,9 @@
-const View = require('./notesView');
+const NotesModel = require('./notesModel');
+const NotesView = require('./notesView');
 
-const view = new View();
+const model = new NotesModel();
+model.addNote('This is an example note');
+
+const view = new NotesView(model);
+
+view.displayNotes();
