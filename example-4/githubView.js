@@ -10,14 +10,29 @@ class GithubView {
       const repoName = repoInputEl.value;
 
       this.client.getRepoInfo(repoName, repoData => {
-        console.log(repoData);
+        this.display(repoData);
       });
     });
   }
 
-  display() {
+  display(repoData) {
+    const repoNameEl = document.querySelector('#repo-name');
+    const repoDescriptionEl = document.querySelector('#repo-description');
+    const repoImageEl = document.querySelector('#repo-image');
+
+    // This section adds the contents
+    repoNameEl.textContent = repoData.full_name;
+    repoDescriptionEl.textContent = repoData.description;
+
+    // To add img element
+    const imgEl = document.createElement('img');
+    imgEl.src = repoData.organization.avatar_url;
+
+    // Append the img element to the container
+    repoImageEl.appendChild(imgEl);
 
   }
-}
+
+  }
 
 module.exports = GithubView;
