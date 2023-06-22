@@ -14,9 +14,17 @@ class NotesView {
         this.displayNotes();
 
     }
-    
+
     displayNotes() {
+
+        // Remove all previous notes
+        document.querySelectorAll('.note').forEach(element => {
+            element.remove(); 
+    })
         const notes = this.model.getNotes()
+
+        // Text input reset to an empty value after user clicked button
+        document.querySelector('#add-note-input').value = '';
 
         notes.forEach(note => {
             const noteEl = document.createElement('div');
@@ -24,6 +32,8 @@ class NotesView {
             noteEl.className = 'note';
             this.mainContainerEL.append(noteEl);
         })
+
+        
     }
 }
 
